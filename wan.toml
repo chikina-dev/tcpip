@@ -1,0 +1,31 @@
+[[router]]
+id = "02:00:00:ff:00:01"
+if0_bind = "127.0.0.1:40011"
+if0_mac = "02:00:00:01:01:01"
+if0_ip = "10.0.1.1"
+if0_mode = "listen"
+if1_bind = "127.0.0.1:40012"
+if1_mac = "02:00:00:01:0c:01"
+if1_ip = "10.0.12.1"
+if1_mode = "uplink"
+if1_uplink = "127.0.0.1:40021"
+
+[[router.route]]
+cidr = "10.0.2.0/24"
+next_hop = "10.0.12.2"
+
+[[router]]
+id = "02:00:00:ff:00:02"
+if0_bind = "127.0.0.1:40021"
+if0_mac = "02:00:00:02:0c:02"
+if0_ip = "10.0.12.2"
+if0_mode = "uplink"
+if0_uplink = "127.0.0.1:40012"
+if1_bind = "127.0.0.1:40022"
+if1_mac = "02:00:00:02:02:01"
+if1_ip = "10.0.2.1"
+if1_mode = "listen"
+
+[[router.route]]
+cidr = "10.0.1.0/24"
+next_hop = "10.0.12.1"
